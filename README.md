@@ -22,7 +22,7 @@ Provides the core library dependencies used by all of our project images.  Speci
 - [hls-laads](https://github.com/NASA-IMPACT/hls-laads) - Uses C utilities from [espa-surface-reflectance](https://github.com/NASA-IMPACT/espa-surface-reflectance) to download and synchronize required auxilary data from the LAADS DAAC.
 
 ### Utilities
-Generating HLS proudcts requires a suite of addtional metadata and secondary files for ingestion into externl systems such as [CMR](https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr), [Cumulus](https://nasa.github.io/cumulus/docs/cumulus-docs-readme) and [GIBs](https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs).  These Python CLI utilities are installed and used from within the containers.
+Generating HLS proudcts requires a suite of addtional metadata and secondary files for ingestion into external systems such as [CMR](https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/cmr), [Cumulus](https://nasa.github.io/cumulus/docs/cumulus-docs-readme) and [GIBs](https://earthdata.nasa.gov/eosdis/science-system-description/eosdis-components/gibs).  These Python CLI utilities are installed and used from within the containers.
 
 - [hls-metadata](https://github.com/NASA-IMPACT/hls-metadata) - Generate CMR metadata for HLS products.
 
