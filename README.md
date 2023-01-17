@@ -1,23 +1,25 @@
 ## hls-project
 This document provides an overview of code and artifacts used by the Harmonized Landsat Sentinel (HLS) project.  For more detailed information about the HLS product specification and distribution consult the LPDAAC [product landing page](https://lpdaac.usgs.gov/products/hlss30v002/)
 
-The original development goal of the HLS project was to expand existing, experimental HLS scientific algorithm code to a full scale global production pipeline running on scalable AWS infrastructure.  Due to the nature of the project and the potential for a large number interoperating components, an early decision was made to use individual repositories for code management rather than a monorepo.  This provides the advantage of clear traceability and narrative of a component's development over time by reviewing the repository's commit history.  The disadvantage of this approach is the large number of repositories with no clear map of how they are interelated.  This document provides this map of how components are interelated and how they interoperate.
+The initial development goal of the HLS project was to expand existing, experimental HLS scientific algorithm code to a full scale global production pipeline running on scalable AWS infrastructure.  Due to the nature of the project and the potential for a large number of components, an early decision was made to use individual repositories for code management rather than a monorepo.  This provides the advantage of clear traceability and narrative of a component's development over time by reviewing the repository's commit history.  The disadvantage of this approach is the large number of repositories with no clear map of how they are interelated.  This document provides this map of how components are interelated and how they interoperate.
 
 
 ### Containers
 The core of the HLS processing pipeline is algorithmic C code packaged as Docker containers.  Because different scientific libraries utilized in these containers share common dependencies, we use a simple hierarchical image dependency graph.
 
+![Alt text](/docs/docker.png)
+
 - [espa-dockerfiles](https://github.com/NASA-IMPACT/espa-dockerfiles)
 Provides the core library dependencies used by all of our project images.  Specifically, we utilize `centos.external` as our primary base image.
 
-- [hls-base](https://github.com/NASA-IMPACT/hls-base) - Provides the externally developed C/Python/Matlab libraries used for atmospheric correction and cloud masking in both our S30 and L30 pipelines.  These include
-    - [espa-product-formatter](https://github.com/NASA-IMPACT/espa-product-formatter) - An espa metadata and format conversion utility.
+- [hls-base](https://github.com/NASA-IMPACT/hls-base) - Provides the externally developed C/Python/Matlab libraries used for atmospheric correction and cloud masking in both our HLS S30 and L30 pipelines.  These include
+    - [espa-product-formatter](https://github.com/NASA-IMPACT/espa-product-formatter) - An ESPA metadata and format conversion utility.
     - [espa-surface-reflectance](https://github.com/NASA-IMPACT/espa-surface-reflectance) - The C implementation of the LaSRC surface reflectance algorithm.
     - [espa-python-library](https://github.com/NASA-IMPACT/espa-python-library) - A Python library for manipulating and validating ESPA metadata.
     - [Fmask](https://github.com/GERSL/Fmask) - The Matlab implementation of the Fmask cloud masking algorithm.
 
-- [hls-sentinel](https://github.com/NASA-IMPACT/hls-sentinel) - Provides the internally developed C libraries and utilities for generating HLS S30 products from Sentinel 2 inputs.
-- [hls-landsat](https://github.com/NASA-IMPACT/hls-landsat) - Provides the internally developed C libraries and utilities for generating intermediate surface reflectance proudcts from Landsat inputs.
+- [hls-sentinel](https://github.com/NASA-IMPACT/hls-sentinel) - Uses internally developed C libraries and utilities for generating HLS S30 products from Sentinel 2 inputs.
+- [hls-landsat](https://github.com/NASA-IMPACT/hls-landsat) - Uses internally developed C libraries and utilities for generating intermediate surface reflectance proudcts from Landsat inputs.
 - [hls-landat-tile](https://github.com/NASA-IMPACT/hls-landsat-tile) - Provides the internally devloped C libraries and utilities for generating tiled HLS L30 proudcts from intermediate surface reflectance proudcts.
 - [hls-laads](https://github.com/NASA-IMPACT/hls-laads) - Uses C utilities from [espa-surface-reflectance](https://github.com/NASA-IMPACT/espa-surface-reflectance) to download and synchronize required auxilary data from the LAADS DAAC.
 
