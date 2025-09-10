@@ -63,7 +63,15 @@ These repositories define the infrastructure as code and AWS components which ma
 
 - [hls-lpdaac](https://github.com/NASA-IMPACT/hls-lpdaac) - Sends HLS product CNM messages to LPDAAC's Cumulus queue to trigger ingest.
 
-- [hls-vi-historical-orchestration] - Orchestrates running [hls-vi-historical] container to backfill the HLS-VI product for historical time periods.
+- [hls-lpdaac-reconciliation](https://github.com/NASA-IMPACT/hls-lpdaac-reconciliation) - Receives and processes reconciliation reports from LPDAAC to ensure products we request that LPDAAC publish are available to end users.
+
+- [hls-vi-historical-orchestration] - Orchestrates running the [hls-vi-historical] container to backfill the HLS-VI product for historical time periods.
+
+### User Tools
+These repositories contain guides, code samples, and other documentation that are intended to help users learn to use the HLS products.
+
+- [hls-application](https://github.com/NASA-IMPACT/hls-application) - Notebooks describing how to find and use HLS products for a variety of Earth observation scenarios.
+
 
 
 [hls-vi]: https://github.com/NASA-IMPACT/hls-vi
