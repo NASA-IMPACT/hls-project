@@ -62,6 +62,8 @@ These repositories define the infrastructure as code and AWS components which ma
 
 - [hls-orchestration](https://github.com/NASA-IMPACT/hls-orchestration) - The core HLS processing infrastructure which receives notifcations for new Sentinel-2 and Landsat data to process and generates HLS S30 and L30 products.
 
+- [hls-nextgen-orchestration](https://github.com/NASA-IMPACT/hls-nextgen-orchestration) - (Work in progress) The next generation HLS S30 and L30 processing infrastructure, built to run the [hls-science-container]. Unlike [hls-orchestration], processing is triggered by events (S3 notifications and EventBridge rules) rather than scheduled or polling Step Functions, and S3 is used as the log and processing state store rather than an RDS database.
+
 - [hls-sentinel2-downloader-serverless](https://github.com/NASA-IMPACT/hls-sentinel2-downloader-serverless) - Monitors new publications and continually downloads Sentinel-2 data from the [ESA International Access Hub](https://inthub.copernicus.eu/) in near real time.
 
 - [hls-landsat-historic](https://github.com/NASA-IMPACT/hls-landsat-historic) - Sends date range listings of historical Landsat data from the USGS S3 archive to [hls-orchestration](https://github.com/NASA-IMPACT/hls-orchestration) for incremental archival processing.
@@ -128,6 +130,7 @@ The previous container image dependency graph:
 [hls-science-container]: https://github.com/NASA-IMPACT/hls-science-container
 [hls-atmospheric-auxdata]: https://github.com/NASA-IMPACT/hls-atmospheric-auxdata
 [hls-utilities]: https://github.com/NASA-IMPACT/hls-utilities
+[hls-orchestration]: https://github.com/NASA-IMPACT/hls-orchestration
 [lasrc-rs]: https://github.com/NASA-IMPACT/lasrc-rs
 [espa-surface-reflectance]: https://github.com/NASA-IMPACT/espa-surface-reflectance
 [espa-product-formatter]: https://github.com/NASA-IMPACT/espa-product-formatter
