@@ -4,6 +4,8 @@ This document provides an overview of code and artifacts used by the Harmonized 
 
 The initial development goal of the HLS project was to expand existing, experimental HLS scientific algorithm code to a full scale global production pipeline running on scalable AWS infrastructure.  This document provides a map of how the code repositories used by the project are interrelated and how they interoperate.
 
+You may also be interested in the [Wiki](https://github.com/NASA-IMPACT/hls-project/wiki) for documenting HLS project initiatives, including atmospheric correction verification methodology and results.
+
 ### HLS Standard Products
 
 The HLS standard products (S30 and L30) are surface reflectance products generated from Sentinel-2 and Landsat inputs.
